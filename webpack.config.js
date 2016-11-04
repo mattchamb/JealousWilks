@@ -25,6 +25,7 @@ module.exports = {
       },
       { test: /\.css$/, loader: "style-loader!css-loader" },
       { test: /\.html$/, loader: "html-loader" },
+      { test: /\.ts$/, loader: "babel-loader!ts-loader" },
       {
         test: /\.(eot|woff|woff2|ttf)$/,
         loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
