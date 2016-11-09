@@ -1,12 +1,12 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
     filename: 'build.js'
   },
   module: {
@@ -50,7 +50,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Jealous Wilks',
       template: 'index-template.ejs',
-    })
+    }),
+    new ManifestPlugin()
   ],
   devtool: '#eval-source-map'
 }

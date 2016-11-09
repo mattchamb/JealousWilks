@@ -28,7 +28,7 @@ Vue.component('opponent-entry', {
             if(this.bodyweightInvalid)
                 return;
             var currentId = id++;
-            this.$emit('addOpponent', {
+            this.$emit('addopponent', {
                 id: currentId,
                 name: this.name || 'Opponent ' + currentId,
                 gender: this.gender,
