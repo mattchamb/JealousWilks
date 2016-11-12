@@ -1,0 +1,81 @@
+<div class="uk-container uk-container-center uk-margin-top">
+
+    <div class="uk-panel">
+        <div class="uk-panel-title">My Lifts <span class="uk-text-small">Current Bodyweight: {{ bodyweight }}kg</span></div>
+        <div class="uk-width-1-1">
+            <form class="uk-form uk-form-stacked">
+                <div class="uk-grid uk-grid-width-small-1-1 uk-grid-width-medium-1-3">
+                    <div>
+                        <label class="uk-form-label" for="mysquat">My Squat</label>
+                        <input id="mysquat" type="number" v-model="squat" min="0" placeholder="Weight in kg" />
+                    </div>
+
+                    <div>
+                        <label class="uk-form-label" for="mybenchpress">My Benchpress</label>
+                        <input id="mybenchpress" type="number" v-model="benchpress" min="0" placeholder="Weight in kg" />
+                    </div>
+
+                    <div>
+                        <label class="uk-form-label" for="mydeadlift">My Deadlift</label>
+                        <input id="mydeadlift" type="number" v-model="deadlift" min="0" placeholder="Weight in kg" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="uk-panel uk-margin-top">
+        <div class="uk-panel-title">Current Placings</div>
+        <div class="uk-width-1-1">
+            <div class="uk-overflow-container">
+                <table class="uk-table uk-table-striped">
+                    <thead>
+                        <tr>
+                            <th>Place</th>
+                            <th>Name</th>
+                            <th>Wilks</th>                            
+                            <th>Total</th>
+                            <th>Total Required To Match</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in placements" v-bind:class="{'uk-text-bold': item.isTheUser}">
+                            <td>{{ item.place }}</td>
+                            <td><i v-bind:class="{'uk-icon-mars': item.gender == 'male', 'uk-icon-venus': item.gender == 'female'}"></i>                                {{ item.name }}</td>
+                            <td>{{ item.wilks.toFixed(2) }}</td>
+                            <td>{{ item.total }}kg</td>
+                            <td>
+                                <span v-if="!item.isTheUser">{{ item.totalRequiredToMatch }}</span>
+                                <span class="uk-text-danger" v-if="item.isTheUser && item.place != '1st'">
+                                    <i class="uk-icon-arrow-circle-o-up"></i> 
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-panel uk-margin-top">
+        <div class="uk-panel-title">Opponents' Lifts</div>
+        <div class="uk-width-1-1">
+            <table class="uk-table uk-table-striped uk-table-condensed">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Coefficient</th>
+                        <th>Squat</th>
+                        <th>Benchpress</th>
+                        <th>Deadlift</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in editableOpponents" is="opponent-lifts-edit-row" :opponent="item">
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

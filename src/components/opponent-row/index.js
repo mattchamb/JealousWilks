@@ -1,11 +1,9 @@
 import Vue from 'vue'
 import view from './view.html'
-
 import wilks from '../../wilks.ts';
 
-var id = 0;
-
-Vue.component('opponent-row', {
+var name = 'opponent-row';
+var component = {
     props: ["opponent"],
     template: view,
     data () {
@@ -23,7 +21,9 @@ Vue.component('opponent-row', {
     },
     methods: {
         removeOpponent: function() {
-            this.$emit('removed', this.opponent);
+            this.$store.commit('removeOpponent', this.opponent);
         }
     }
-})
+};
+
+export { name, component };

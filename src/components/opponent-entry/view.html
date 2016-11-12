@@ -1,26 +1,68 @@
-<form class="uk-form uk-form-stacked" v-on:submit.prevent="addOpponent">
-    <div class="uk-form-row">
-        <label class="uk-form-label" for="opponentName">Opponent Name</label>
-        <div class="uk-form-controls">
-            <input id="opponentName" type="text" v-model.trim="name" />
+<div class="uk-grid uk-margin" data-uk-grid-margin>
+
+    <div class="uk-width-1-2">
+        <form class="uk-form uk-form-stacked" v-on:submit.prevent="addOpponent">
+            <div class="uk-form-row">
+                <label class="uk-form-label" for="opponentName">Opponent Name</label>
+                <div class="uk-form-controls">
+                    <input id="opponentName" type="text" v-model.trim="name" />
+                </div>
+            </div>
+            <div class="uk-form-row">
+                <label class="uk-form-label" for="opponentgender">Opponent Gender</label>
+                <div class="uk-form-controls">
+                    <input id="opponentmalegender" type="radio" name="opponentgender" v-model="gender" value="male" />
+                    <label for="opponentmalegender">Male</label>
+                    <input id="opponentfemalegender" type="radio" name="opponentgender" v-model="gender" value="female" />
+                    <label for="opponentfemalegender">Female</label>
+                </div>
+            </div>
+            <div class="uk-form-row">
+                <label class="uk-form-label" for="opponentbodyweight">Opponent Bodyweight</label>
+                <div class="uk-form-controls">
+                    <input v-bind:class="{'uk-form-danger': bodyweightInvalid}" id="opponentbodyweight" type="number" placeholder="Weight in kg" v-model.number="bodyweight" min="0" />
+                </div>
+            </div>
+            <div class="uk-form-row">
+                <button class="uk-button" v-bind:disabled="formInvalid">Add Opponent</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="uk-width-1-2" data-uk-grid-margin>
+        <h2>Import CSV</h2>
+        <form class="uk-form uk-form-stacked" v-on:submit.prevent>
+            <div class="uk-form-row">
+                <label class="uk-form-label" for="importFileSelect">Upload CSV</label>
+                <div class="uk-form-controls">
+                    <input id="importFileSelect" type="file" accept=".csv" v-on:change.prevent="fileSelected" />
+                </div>
+            </div>
+        </form>
+        <div class="uk-width-1-1">
+            <h3>Example CSV</h3>
+            <ul>
+               <li v-for="(ex, i) in csvExamples">
+                   <a v-bind:download="'Example' + (i + 1) + '.csv'" v-bind:href="'data:text/csv;' + encodeURI(ex.contents)">{{ ex.name }}</a>
+                   <button class="uk-button uk-button-mini" v-on:click="importExampleCsv(ex)">Import</button>
+                </li> 
+            </ul>
         </div>
     </div>
-    <div class="uk-form-row">
-        <label class="uk-form-label" for="opponentgender">Opponent Gender</label>
-        <div class="uk-form-controls">
-            <input id="opponentmalegender" type="radio" name="opponentgender" v-model="gender" value="male" />
-            <label for="opponentmalegender">Male</label>
-            <input id="opponentfemalegender" type="radio" name="opponentgender" v-model="gender" value="female" />
-            <label for="opponentfemalegender">Female</label>
-        </div>
+
+    <div class="uk-width-1-1" v-if="opponents.length != 0">
+        <table class="uk-table uk-table-striped uk-table-condensed">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Bodyweight</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="item in opponents" is="opponent-row" :opponent="item" :key="item.id" >
+            </tr>
+        </tbody>
+        </table>
     </div>
-    <div class="uk-form-row">
-        <label class="uk-form-label" for="opponentbodyweight">Opponent Bodyweight</label>
-        <div class="uk-form-controls">
-            <input v-bind:class="{'uk-form-danger': bodyweightInvalid}" id="opponentbodyweight" type="number" placeholder="Weight in kg" v-model.number="bodyweight" min="0" /> kg
-        </div>
-    </div>
-    <div class="uk-form-row">
-        <button class="uk-button" v-bind:disabled="formInvalid">Add Opponent</button>
-    </div>
-</form>
+</div>

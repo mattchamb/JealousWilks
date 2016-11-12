@@ -1,11 +1,5 @@
 <div class="uk-container uk-container-center uk-margin-top">
     <div class="uk-grid" data-uk-grid-margin>
-        <div class="uk-width-1-1 uk-text-center">
-            <h1 class="uk-heading-large">Jealous Wilks</h1>
-            <p class="uk-text-large">Because maths is harder than lifting</p>
-        </div>
-    </div>
-    <div class="uk-grid" data-uk-grid-margin>
         <div class="uk-width-medium-1-2 uk-width-small-1-1">
             <form class="uk-form uk-form-stacked">
                 <div class="uk-form-row">
@@ -27,18 +21,18 @@
         </div>
         <div class="uk-width-1-1">
             <form class="uk-form uk-form-stacked">
-                <div class="uk-grid">
-                    <div class="uk-width-medium-1-3 uk-width-small-1-1">
+                <div class="uk-grid uk-grid-width-small-1-1 uk-grid-width-medium-1-3">
+                    <div>
                         <label class="uk-form-label" for="mysquat">My Squat</label>
                         <input id="mysquat" type="number" v-model="squat" min="0" placeholder="Weight in kg" /> kg
                     </div>
                     
-                    <div class="uk-width-medium-1-3 uk-width-small-1-1">
+                    <div>
                         <label class="uk-form-label" for="mybenchpress">My Benchpress</label>
                         <input id="mybenchpress" type="number" v-model="benchpress" min="0" placeholder="Weight in kg" /> kg
                     </div>
                     
-                    <div class="uk-width-medium-1-3 uk-width-small-1-1">
+                    <div>
                         <label class="uk-form-label" for="mydeadlift">My Deadlift</label>
                         <input id="mydeadlift" type="number" v-model="deadlift" min="0" placeholder="Weight in kg" /> kg
                     </div>
@@ -68,33 +62,6 @@
                 </tbody>
                 </table>
             </div>
-        </div>
-        <div class="uk-width-1-1">
-            <h2>Opponents</h2>
-            
-            <div class="uk-overflow-container">
-                <table class="uk-table uk-table-striped">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Bodyweight</th>
-                        <th>Squat</th>
-                        <th>Benchpress</th>
-                        <th>Deadlift</th>
-                        <th>Total</th>
-                        <th>Wilks</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="item in opponents" is="opponent-row" v-on:removed="removeOpponent" :opponent="item" :key="item.id" >
-                    </tr>
-                </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="uk-width-medium-1-2 uk-width-small-1-1">
-            <opponent-entry v-on:addopponent="addOpponent"></opponent-entry>
         </div>
     </div>
 </div>

@@ -7,7 +7,7 @@
     }
 
     if (typeof define == 'function' && define.amd) {
-        define('uikit-accordion', ['uikit'], function(){
+        define('uikit-accordion', ['../uikit'], function(){
             return component || addon(UIkit);
         });
     }

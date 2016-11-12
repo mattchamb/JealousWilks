@@ -1,0 +1,18 @@
+<tr>
+    <td>
+        <i v-bind:class="{'uk-icon-mars': opponent.gender == 'male', 'uk-icon-venus': opponent.gender == 'female'}"></i>
+         {{ opponent.name }}
+    </td>
+    <td>
+        {{ wilksCoeff }}
+    </td>
+    <td class="uk-form">
+        <input class="uk-form-width-small" type="number" v-model="squat" min="0" placeholder="Weight in kg" />
+    </td>
+    <td class="uk-form">
+        <input class="uk-form-width-small" type="number" v-model="benchpress" min="0" placeholder="Weight in kg" />
+    </td>
+    <td class="uk-form"> 
+        <input class="uk-form-width-small" type="number" v-model="deadlift" min="0" placeholder="Weight in kg" />
+    </td>
+</tr>

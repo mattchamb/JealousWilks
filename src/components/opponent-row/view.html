@@ -1,17 +1,8 @@
 <tr>
-    <td>{{ opponent.name }}</td>
+    <td>
+        <i v-bind:class="{'uk-icon-mars': opponent.gender == 'male', 'uk-icon-venus': opponent.gender == 'female'}"></i> {{ opponent.name }}
+    </td>
     <td>{{ opponent.bodyweight }}kg</td>
-    <td>
-        <input min="0" v-bind:id="'squat-' + opponent.id" v-model="opponent.squat" type="number" placeholder="Squat Weight"> kg
-    </td>
-    <td>
-        <input min="0" v-bind:id="'benchpress-' + opponent.id" v-model="opponent.benchpress" type="number" placeholder="Benchpress Weight"> kg
-    </td>
-    <td>
-        <input min="0" v-bind:id="'deadlift-' + opponent.id" v-model="opponent.deadlift" type="number" placeholder="Deadlift Weight"> kg
-    </td>
-    <td>{{ totalWeight }}kg</td>
-    <td>{{ totalWilksScore.toFixed(2) }}</td>
     <td>
         <button class="uk-close" v-on:click="removeOpponent(opponent)"></button>
     </td>

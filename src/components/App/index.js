@@ -4,10 +4,9 @@ import './styles.css';
 import wilks from '../../wilks.ts';
 import ordinal from 'ordinal';
 
-import '../opponent-entry';
-import '../opponent-row';
 
-Vue.component('app', {
+var name = "app";
+var component = {
     template: view,
     data () {
         return {
@@ -26,6 +25,11 @@ Vue.component('app', {
         removeOpponent: function(opponent) {
             var index = this.opponents.indexOf(opponent);
             this.opponents.splice(index, 1);
+        },
+        importOpponents: function(opponents) {
+            for(var i = 0; i < opponents.length; i++) {
+                this.opponents.push(opponents[i]);
+            }
         }
     },
     computed: {
@@ -64,4 +68,6 @@ Vue.component('app', {
             return placements;
         }
     }
-})
+};
+
+export { name, component };
