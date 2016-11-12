@@ -16,8 +16,8 @@ componentMutations.forEach(x => {
 });
 
 function getInitialState() {
-    //var savedState = localStorage.getItem("state");
-    if(false) {
+    var savedState = localStorage.getItem("state");
+    if(savedState) {
         return JSON.parse(savedState);
     }
     return {
