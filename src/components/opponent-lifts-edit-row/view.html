@@ -1,18 +1,20 @@
 <tr>
-    <td>
-        <i v-bind:class="{'uk-icon-mars': opponent.gender == 'male', 'uk-icon-venus': opponent.gender == 'female'}"></i>
-         {{ opponent.name }}
+    <td class="uk-width-1-4 uk-width-medium-1-5">
+        <div class="uk-width-1-1">
+            <i class="uk-hidden-small" v-bind:class="{'uk-icon-mars': opponent.gender == 'male', 'uk-icon-venus': opponent.gender == 'female'}"></i>            {{ opponent.name }}
+        </div>
+
     </td>
-    <td>
+    <td class="uk-width-1-5 uk-hidden-small">
         {{ wilksCoeff }}
     </td>
-    <td class="uk-form">
-        <input class="uk-form-width-small" type="number" v-model="squat" min="0" placeholder="Weight in kg" />
+    <td class="uk-width-1-4 uk-width-medium-1-5 uk-form">
+        <input class="uk-width-1-1" type="number" v-model="squat" min="0" placeholder="Weight in kg" />
     </td>
-    <td class="uk-form">
-        <input class="uk-form-width-small" type="number" v-model="benchpress" min="0" placeholder="Weight in kg" />
+    <td class="uk-width-1-4 uk-width-medium-1-5 uk-form">
+        <input class="uk-width-1-1" type="number" v-model="benchpress" min="0" placeholder="Weight in kg" />
     </td>
-    <td class="uk-form"> 
-        <input class="uk-form-width-small" type="number" v-model="deadlift" min="0" placeholder="Weight in kg" />
+    <td class="uk-width-1-4 uk-width-medium-1-5 uk-form">
+        <input class="uk-width-1-1" type="number" v-model="deadlift" min="0" placeholder="Weight in kg" />
     </td>
 </tr>

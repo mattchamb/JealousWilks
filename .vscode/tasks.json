@@ -9,11 +9,13 @@
     "tasks": [
         {
             "taskName": "dev",
-            "args": ["run", "dev"]
+            "args": ["run", "dev"],
+            "isWatching": true
         },
         {
             "taskName": "build",
-            "args": ["run", "build"]
+            "args": ["run", "build"],
+            "isBuildCommand": true
         }
     ]
 }

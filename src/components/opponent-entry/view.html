@@ -36,9 +36,10 @@
             <h2>Import CSV</h2>
             <form class="uk-form uk-form-stacked" v-on:submit.prevent>
                 <div class="uk-form-row">
-                    <label class="uk-form-label" for="importFileSelect">Upload CSV</label>
+                    <label class="uk-form-label">Upload CSV</label>
                     <div class="uk-form-controls">
-                        <input id="importFileSelect" type="file" accept=".csv" v-on:change.prevent="fileSelected" />
+                        <label class="uk-button" for="importFileSelect">Select File</label>
+                        <input class="uk-hidden" id="importFileSelect" type="file" accept=".csv" v-on:change.prevent="fileSelected" />
                     </div>
                 </div>
             </form>
@@ -54,19 +55,22 @@
         </div>
 
         <div class="uk-width-1-1" v-if="opponents.length != 0">
-            <table class="uk-table uk-table-striped uk-table-condensed">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Bodyweight</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="item in opponents" is="opponent-row" :opponent="item" :key="item.id">
-                    </tr>
-                </tbody>
-            </table>
+            <div class="uk-overflow-container">
+                <table class="uk-table uk-table-striped uk-table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Bodyweight</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in opponents" is="opponent-row" :opponent="item" :key="item.id">
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
 </div>
