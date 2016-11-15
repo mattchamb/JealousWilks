@@ -7,7 +7,8 @@ const routes = [
   { path: '/', component: 'app' },
   { path: '/me', component: 'my-stats-entry' },
   { path: '/opponents', component: 'opponent-entry' },
-  { path: '/competition', component: 'competition' }
+  { path: '/competition', component: 'competition' },
+  { path: '/calculators', component: 'calculators' }
 ];
 
 const router = new VueRouter({

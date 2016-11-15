@@ -2,6 +2,8 @@ var someId = 9999;
 
 var asdf = {
     addOpponent: function (state, val) {
+        while(state.opponents.find(op => op.id == someId))
+            someId++;
         var newOpponent = {
             id: val.id | someId++,
             name: !!val.name ? val.name : "{Not Found}",

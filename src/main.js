@@ -14,7 +14,9 @@ var componentNames = [
     require("./components/my-stats-entry"),
     require("./components/opponent-row"),
     require("./components/opponent-lifts-edit-row"),
-    require("./components/competition")
+    require("./components/competition"),
+    require("./components/chart-test"),
+    require("./components/calculators")
 ];
 
 componentNames.forEach(n => {
